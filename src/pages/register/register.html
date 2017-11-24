@@ -1,0 +1,62 @@
+<!--
+  Generated template for the RegisterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Register</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div class="login-box">
+      <form  [formGroup]="registerForm" (ngSubmit)="create()">
+        <ion-row>
+          <ion-col col-6>
+            <ion-list inset>
+              
+              <ion-item >
+                <ion-input type="text" placeholder="Firstname" formControlName="firstname" ></ion-input>
+              </ion-item>
+              <p *ngIf="registerForm.controls['firstname'].hasError('required') && registerForm.controls['firstname'].touched">Please Enter First Name.</p>
+              <p *ngIf="registerForm.controls['firstname'].hasError('minlength') && registerForm.controls['firstname'].touched">Minimum length is 5.</p>            
+              <p *ngIf="registerForm.controls['firstname'].hasError('maxlength') && registerForm.controls['firstname'].touched">Max length is 10.</p>
+
+              <ion-item>
+                <ion-input type="text" placeholder="Lastname" formControlName="lastname"></ion-input>
+              </ion-item>
+              <p class="error" *ngIf="registerForm.controls['lastname'].hasError('required') && registerForm.controls['lastname'].touched">Please Enter Last Name.</p>
+              <p *ngIf="registerForm.controls['lastname'].hasError('minlength') && registerForm.controls['lastname'].touched">Minimum length is 5.</p>            
+              <p *ngIf="registerForm.controls['lastname'].hasError('maxlength') && registerForm.controls['lastname'].touched">Max length is 10.</p>
+
+              <ion-item>
+                <ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+              </ion-item>
+              <p class="error" *ngIf="registerForm.controls['email'].hasError('required') && registerForm.controls['email'].touched">Please Enter Email.</p>
+                            
+              <ion-item>
+                <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+              </ion-item>
+              <p *ngIf="registerForm.controls['password'].hasError('required') && registerForm.controls['password'].touched">Please enter Password.</p>            
+              <p *ngIf="registerForm.controls['password'].hasError('minlength') && registerForm.controls['password'].touched">Minimum length is 5.</p>            
+              <p *ngIf="registerForm.controls['password'].hasError('maxlength') && registerForm.controls['password'].touched">Max length is 10.</p>
+                           
+            </ion-list>
+          </ion-col>
+        </ion-row>
+        
+        <ion-row>
+            <ion-col class="signup-col">
+              <button ion-button class="submit-btn" type="submit" [disabled]="!registerForm.valid">Register</button>
+            </ion-col>
+        </ion-row>
+        
+      </form>
+    </div>
+</ion-content>
+  

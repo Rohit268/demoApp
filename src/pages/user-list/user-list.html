@@ -1,0 +1,45 @@
+<!--
+  Generated template for the UserListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>user-list</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div class="col-md-8 col-md-offset-2">
+    <button ion-button  (click)="modalshow()"><ion-icon name="add"></ion-icon>ADD</button>
+    <ion-list>
+      <ion-item *ngFor="let item of userData">
+        <!-- <ion-thumbnail item-start>
+          <img src="img/thumbnail-totoro.png">
+        </ion-thumbnail>  -->
+        <ion-row>
+          <h1>Id: </h1>
+          <h2>{{ item.id}}</h2>
+        </ion-row>
+        <ion-row>
+          <h1>Firstname: </h1>
+          <h2>{{ item.firstname}}</h2>
+        </ion-row>
+        <ion-row>
+          <h1>Lastname: </h1>
+          <h2>{{ item.lastname}}</h2>
+        </ion-row>
+        <ion-row>
+            <h1>Email: </h1>
+            <h2>{{ item.email}}</h2>
+        </ion-row>
+        <button ion-button item-end  (click)="modalshow(item.id)">Update</button>
+        <button ion-button item-end (click)="delete(item.id)">Delete</button>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

@@ -1,0 +1,86 @@
+<!--
+  Generated template for the MyModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-row>
+      <ion-title>MyModal</ion-title>
+      <button ion-button  (click)="modalhide()"><ion-icon name="close"></ion-icon></button>
+    </ion-row>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <form  [formGroup]="regForm" >
+        <ion-row>
+          <ion-col>
+            <ion-list inset>
+          
+              <ion-item>
+                <ion-input type="text" placeholder="Firstname" formControlName="firstname" [(ngModel)]="userdata.firstname"></ion-input>
+              </ion-item>
+              <p *ngIf="regForm.controls['firstname'].hasError('required') && regForm.controls['firstname'].touched">Please Enter First Name.</p>
+              <p *ngIf="regForm.controls['firstname'].hasError('minlength') && regForm.controls['firstname'].touched">Minimum length is 5.</p>            
+              <p *ngIf="regForm.controls['firstname'].hasError('maxlength') && regForm.controls['firstname'].touched">Max length is 10.</p>
+
+              <ion-item>
+                <ion-input type="text" placeholder="Lastname" formControlName="lastname" [(ngModel)]="userdata.lastname"></ion-input>
+              </ion-item>
+              <p class="error" *ngIf="regForm.controls['lastname'].hasError('required') && regForm.controls['lastname'].touched">Please Enter Last Name.</p>
+              <p *ngIf="regForm.controls['lastname'].hasError('minlength') && regForm.controls['lastname'].touched">Minimum length is 5.</p>            
+              <p *ngIf="regForm.controls['lastname'].hasError('maxlength') && regForm.controls['lastname'].touched">Max length is 10.</p>
+
+              <ion-item>
+                <ion-input type="text" placeholder="Email" formControlName="email" [(ngModel)]="userdata.email"></ion-input>
+              </ion-item>
+              <p class="error" *ngIf="regForm.controls['email'].hasError('required') && regForm.controls['email'].touched">Please Enter Email.</p>
+                            
+              <ion-item>
+                <ion-input type="password" placeholder="Password" formControlName="password" [(ngModel)]="userdata.password"></ion-input>
+              </ion-item>
+              <p *ngIf="regForm.controls['password'].hasError('required') && regForm.controls['password'].touched">Please enter Password.</p>            
+              <p *ngIf="regForm.controls['password'].hasError('minlength') && regForm.controls['password'].touched">Minimum length is 5.</p>            
+              <p *ngIf="regForm.controls['password'].hasError('maxlength') && regForm.controls['password'].touched">Max length is 10.</p>
+            
+              <ion-item>
+                <ion-input type="password" placeholder="Confirm Password" formControlName="cnfrmPassword" [(ngModel)]="userdata.cnfrmPassword"></ion-input>
+              </ion-item>
+              <!-- <p *ngIf="regForm.controls['cnfrmPassword'].hasError('required') && regForm.controls['cnfrmPassword'].touched">Please Confirm Password.</p>             -->
+              <p *ngIf="regForm.controls.cnfrmPassword.touched && regForm.hasError('mismatchedPasswords') && regForm.controls.password.valid">
+              Passwords do not match!</p>
+              
+              <!-- <ion-item>
+                <!-- <ion-input ngControl="image" type="file" placeholder="Select Image"></ion-input> -->
+                <!-- <button ion-button (click)="upload()">Upload</button> -->
+                <!-- <input type="file" ng2FileSelect [uploader]="upload" multiple formControlName="file"/>
+              </ion-item>   -->
+
+              <ion-item>
+                <p>{{imageURI}}</p>
+                <button ion-button color="secondary" (click)="getImage()">Get Image</button>
+              </ion-item>
+              <ion-item>
+                <h4>Image Preview</h4>
+                <img src="{{imageFileName}}" *ngIf="imageFileName" alt="Ionic File" width="300" />
+              </ion-item>
+              <ion-item>
+                <button ion-button (click)="uploadFile()">Upload</button>
+              </ion-item>
+
+            </ion-list>
+          </ion-col>
+        </ion-row>
+        
+        <ion-row>
+            <ion-col class="signup-col">
+              <button ion-button class="submit-btn" full type="submit" [disabled]="!regForm.valid" (click)="create(userdata.id)">Register</button>
+            </ion-col>
+        </ion-row>
+        
+      </form>
+</ion-content>
